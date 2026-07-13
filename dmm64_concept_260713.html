@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DMM型ネットアセスメント - 現在 (Concept) - DMM64 総合レポート</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #eeebff;
+      --secondary: #64748b;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --text: #334155;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background-color: #f1f5f9;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      color: white;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.025em;
+    }
+    
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 2.5rem;
+    }
+    
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      aside {
+        position: static !important;
+      }
+    }
+    
+    aside {
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+    }
+    
+    .toc-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
+      max-height: calc(100vh - 6rem);
+      overflow-y: auto;
+    }
+    
+    .toc-card h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+    
+    .toc-list {
+      list-style: none;
+    }
+    
+    .toc-list li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .toc-list a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-block;
+      padding: 0.25rem 0;
+      transition: color 0.15s ease;
+    }
+    
+    .toc-list a:hover {
+      color: var(--primary);
+    }
+    
+    .toc-details {
+      margin-left: 0.5rem;
+    }
+    
+    .toc-details summary {
+      cursor: pointer;
+      outline: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dark);
+      padding: 0.25rem 0;
+    }
+    
+    .toc-details summary a {
+      font-weight: 700;
+    }
+    
+    .toc-details ul {
+      list-style: none;
+      padding-left: 1.25rem;
+      margin-top: 0.25rem;
+      border-left: 1px dashed var(--border);
+    }
+    
+    .toc-details ul li {
+      margin-bottom: 0.25rem;
+    }
+    
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    
+    .part-section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.02);
+    }
+    
+    .part-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      border-bottom: 3px solid var(--primary-light);
+      padding-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .theme-card {
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background: #fafafa;
+      position: relative;
+    }
+    
+    .theme-badge {
+      position: absolute;
+      top: -12px;
+      left: 1.5rem;
+      background: var(--primary);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+    
+    .theme-card-title {
+      font-size: 1.2rem;
+      font-weight: 750;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      margin-top: 0.25rem;
+    }
+    
+    .theme-card-body {
+      color: #334155;
+      line-height: 1.7;
+    }
+    
+    .dim-id-text-concept {
+      background: #eef2ff !important;
+      color: #4338ca !important;
+      border: 1px solid #ddd6fe !important;
+    }
+    .dim-id-text-past {
+      background: #f0fdfa !important;
+      color: #0f766e !important;
+      border: 1px solid #ccfbf1 !important;
+    }
+    .dim-id-text-future {
+      background: #fff1f2 !important;
+      color: #be123c !important;
+      border: 1px solid #fecdd3 !important;
+    }
+    
+    .dim-id-text-concept, .dim-id-text-past, .dim-id-text-future {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      margin-right: 4px;
+    }
+    
+    .element-id-concept {
+      background: #eef2ff !important;
+      color: #4338ca !important;
+      border: 1px solid #ddd6fe !important;
+    }
+    .element-id-past {
+      background: #f0fdfa !important;
+      color: #0f766e !important;
+      border: 1px solid #ccfbf1 !important;
+    }
+    .element-id-future {
+      background: #fff1f2 !important;
+      color: #be123c !important;
+      border: 1px solid #fecdd3 !important;
+    }
+    
+    .theme-card-body p, .element-body p {
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+    
+    .theme-card-body p:last-child, .element-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Markdown styling */
+    .theme-card-body h1, .element-body h1 { font-size: 1.5rem; font-weight: 700; margin-top: 1rem; margin-bottom: 0.5rem; color: var(--dark); }
+    .theme-card-body h2, .element-body h2 { font-size: 1.3rem; font-weight: 700; margin-top: 0.9rem; margin-bottom: 0.4rem; color: var(--dark); }
+    .theme-card-body h3, .element-body h3 { font-size: 1.15rem; font-weight: 700; margin-top: 0.8rem; margin-bottom: 0.35rem; color: var(--dark); }
+    .theme-card-body h4, .element-body h4 { font-size: 1rem; font-weight: 700; margin-top: 0.7rem; margin-bottom: 0.3rem; color: var(--dark); }
+    .theme-card-body ul, .element-body ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    .theme-card-body ol, .element-body ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+    .theme-card-body li, .element-body li { margin-bottom: 0.25rem; font-size: 0.95rem; }
+    .theme-card-body blockquote, .element-body blockquote { border-left: 4px solid #cbd5e1; padding-left: 0.75rem; color: #64748b; font-style: italic; margin: 0.75rem 0; background: #f8fafc; padding-top: 0.25rem; padding-bottom: 0.25rem; border-radius: 0 4px 4px 0; }
+    .theme-card-body code, .element-body code { font-family: monospace; background: #f1f5f9; padding: 0.1rem 0.3rem; border-radius: 4px; font-size: 0.85em; }
+    .theme-card-body hr, .element-body hr { border: 0; border-top: 1px solid #e2e8f0; margin: 1rem 0; }
+    .theme-card-body a, .element-body a { color: #3b82f6; text-decoration: underline; }
+    
+    .subtheme-group {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    
+    .subtheme-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+    
+    .sub-theme-card {
+      border-left-color: var(--secondary);
+      background-color: #f8fafc;
+    }
+    
+    .bhava-container {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-bottom: 0.75rem;
+    }
+    
+    .bhava-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #b91c1c;
+      background-color: #fef2f2;
+      border: 1px solid #fee2e2;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+    
+    .elements-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .element-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
+    }
+    
+    .element-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      border-color: #cbd5e1;
+    }
+    
+    .element-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--primary-light);
+      padding-bottom: 0.75rem;
+    }
+    
+    .element-id {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.40rem;
+      border-radius: 6px;
+    }
+    
+    .element-name {
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 0.95rem;
+    }
+    
+    .element-body p {
+      font-size: 0.85rem;
+      color: #475569;
+      margin-bottom: 0.5rem;
+    }
+    
+    .element-body p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .url-p {
+      font-size: 0.8rem;
+      color: var(--primary);
+      margin-top: 0.5rem;
+      word-break: break-all;
+    }
+    
+    .url-p a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    
+    .no-desc {
+      color: #94a3b8;
+      font-style: italic;
+    }
+    
+    .cell-image-container {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f8fafc;
+      width: fit-content;
+      max-width: 100%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .cell-image-preview {
+      width: auto;
+      height: auto;
+      max-width: 320px;
+      max-height: 320px;
+      object-fit: contain;
+      object-position: left;
+      display: block;
+      background: #f1f5f9;
+    }
+    
+    .cell-image-memo {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.8rem;
+      color: #475569;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      margin: 0 !important;
+      font-style: italic;
+      text-align: left;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--secondary);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      background: white;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+ 
+  <header>
+    <h1>DMM型ネットアセスメント</h1>
+    <p>DMM64 総合レポート - 現在 (Concept) -</p>
+  </header>
+ 
+  <div class="container">
+    <aside>
+      <div class="toc-card">
+        <h2>目次</h2>
+        <ul class="toc-list">
+          <li><a href="#summary" style="padding-left: 1.35rem;">全体概要</a></li>
+          
+          <li>
+            <details class="toc-details" open>
+              <summary><a href="#center-theme-section" class="dim-id-text-concept">中核テーマ</a></summary>
+              <ul>
+                <li><a href="#center-theme-section"><span class="dim-id-text-concept">0-0</span>: DMM型ネットアセスメント</a></li>
+                                <li><a href="#subtheme-0-1-direct"><span class="dim-id-text-concept">0-1</span>: 自社構想DMM</a></li>
+                <li><a href="#subtheme-0-2-direct"><span class="dim-id-text-concept">0-2</span>: 自社DMM分析</a></li>
+                <li><a href="#subtheme-0-3-direct"><span class="dim-id-text-concept">0-3</span>: 競合DMM分析</a></li>
+                <li><a href="#subtheme-0-4-direct"><span class="dim-id-text-concept">0-4</span>: 自社競合差分分析</a></li>
+                <li><a href="#subtheme-0-5-direct"><span class="dim-id-text-concept">0-5</span>: 重心セル抽出収束</a></li>
+                <li><a href="#subtheme-0-6-direct"><span class="dim-id-text-concept">0-6</span>: 専門チーム分岐展開</a></li>
+                <li><a href="#subtheme-0-7-direct"><span class="dim-id-text-concept">0-7</span>: 組織論理論接続</a></li>
+                <li><a href="#subtheme-0-8-direct"><span class="dim-id-text-concept">0-8</span>: 議論経路記録保存</a></li>
+
+              </ul>
+            </details>
+          </li>
+          
+          <li>
+            <details class="toc-details" open>
+              <summary><a href="#part-active" class="dim-id-text-concept">展開テーマ</a></summary>
+              <ul>
+                          <li>
+            <details class="toc-details">
+              <summary><a href="#subtheme-concept-1"><span class="dim-id-text-concept">1-0</span>: 自社構想DMM</a></summary>
+              <ul>
+                  <li><a href="#element-concept-1-1"><span class="dim-id-text-concept">1-1</span>: ミッションを定義する</a></li>
+                  <li><a href="#element-concept-1-2"><span class="dim-id-text-concept">1-2</span>: 中期構想を策定する</a></li>
+                  <li><a href="#element-concept-1-3"><span class="dim-id-text-concept">1-3</span>: 新規事業を構想する</a></li>
+                  <li><a href="#element-concept-1-4"><span class="dim-id-text-concept">1-4</span>: 顧客価値を再定義する</a></li>
+                  <li><a href="#element-concept-1-5"><span class="dim-id-text-concept">1-5</span>: 社会的意義を検討する</a></li>
+                  <li><a href="#element-concept-1-6"><span class="dim-id-text-concept">1-6</span>: 組織変革を構想する</a></li>
+                  <li><a href="#element-concept-1-7"><span class="dim-id-text-concept">1-7</span>: 投資領域を選定する</a></li>
+                  <li><a href="#element-concept-1-8"><span class="dim-id-text-concept">1-8</span>: 撤退領域を判断する</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details class="toc-details">
+              <summary><a href="#subtheme-concept-2"><span class="dim-id-text-concept">2-0</span>: 自社DMM分析</a></summary>
+              <ul>
+                  <li><a href="#element-concept-2-1"><span class="dim-id-text-concept">2-1</span>: 自社の強みを整理する</a></li>
+                  <li><a href="#element-concept-2-2"><span class="dim-id-text-concept">2-2</span>: 自社の弱みを直視する</a></li>
+                  <li><a href="#element-concept-2-3"><span class="dim-id-text-concept">2-3</span>: 経営資源を棚卸しする</a></li>
+                  <li><a href="#element-concept-2-4"><span class="dim-id-text-concept">2-4</span>: 人材構成を分析する</a></li>
+                  <li><a href="#element-concept-2-5"><span class="dim-id-text-concept">2-5</span>: 技術力を評価する</a></li>
+                  <li><a href="#element-concept-2-6"><span class="dim-id-text-concept">2-6</span>: 顧客基盤を把握する</a></li>
+                  <li><a href="#element-concept-2-7"><span class="dim-id-text-concept">2-7</span>: 組織文化を検証する</a></li>
+                  <li><a href="#element-concept-2-8"><span class="dim-id-text-concept">2-8</span>: 組織内摩擦を可視化する</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details class="toc-details">
+              <summary><a href="#subtheme-concept-3"><span class="dim-id-text-concept">3-0</span>: 競合DMM分析</a></summary>
+              <ul>
+                  <li><a href="#element-concept-3-1"><span class="dim-id-text-concept">3-1</span>: 競合の強みを分析する</a></li>
+                  <li><a href="#element-concept-3-2"><span class="dim-id-text-concept">3-2</span>: 競合の弱みを推定する</a></li>
+                  <li><a href="#element-concept-3-3"><span class="dim-id-text-concept">3-3</span>: 資源配分を推測する</a></li>
+                  <li><a href="#element-concept-3-4"><span class="dim-id-text-concept">3-4</span>: 市場での位置を把握する</a></li>
+                  <li><a href="#element-concept-3-5"><span class="dim-id-text-concept">3-5</span>: 競合の技術力を評価する</a></li>
+                  <li><a href="#element-concept-3-6"><span class="dim-id-text-concept">3-6</span>: 意思決定速度を推定する</a></li>
+                  <li><a href="#element-concept-3-7"><span class="dim-id-text-concept">3-7</span>: 想定戦略を検討する</a></li>
+                  <li><a href="#element-concept-3-8"><span class="dim-id-text-concept">3-8</span>: 競合の盲点を探る</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details class="toc-details">
+              <summary><a href="#subtheme-concept-4"><span class="dim-id-text-concept">4-0</span>: 自社競合差分分析</a></summary>
+              <ul>
+                  <li><a href="#element-concept-4-1"><span class="dim-id-text-concept">4-1</span>: 重視要素の差を抽出する</a></li>
+                  <li><a href="#element-concept-4-2"><span class="dim-id-text-concept">4-2</span>: 見落とし要素を発見する</a></li>
+                  <li><a href="#element-concept-4-3"><span class="dim-id-text-concept">4-3</span>: 制約の違いを比較する</a></li>
+                  <li><a href="#element-concept-4-4"><span class="dim-id-text-concept">4-4</span>: 意思決定速度を比較する</a></li>
+                  <li><a href="#element-concept-4-5"><span class="dim-id-text-concept">4-5</span>: 資源配分の違いを見る</a></li>
+                  <li><a href="#element-concept-4-6"><span class="dim-id-text-concept">4-6</span>: 顧客理解の差を測る</a></li>
+                  <li><a href="#element-concept-4-7"><span class="dim-id-text-concept">4-7</span>: 組織摩擦を比較する</a></li>
+                  <li><a href="#element-concept-4-8"><span class="dim-id-text-concept">4-8</span>: 将来構想の差を比較する</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details class="toc-details">
+              <summary><a href="#subtheme-concept-5"><span class="dim-id-text-concept">5-0</span>: 重心セル抽出収束</a></summary>
+              <ul>
+                  <li><a href="#element-concept-5-1"><span class="dim-id-text-concept">5-1</span>: 重要セルを選定する</a></li>
+                  <li><a href="#element-concept-5-2"><span class="dim-id-text-concept">5-2</span>: 重視理由を議論する</a></li>
+                  <li><a href="#element-concept-5-3"><span class="dim-id-text-concept">5-3</span>: セルを中心に再展開する</a></li>
+                  <li><a href="#element-concept-5-4"><span class="dim-id-text-concept">5-4</span>: 専門チームで深掘りする</a></li>
+                  <li><a href="#element-concept-5-5"><span class="dim-id-text-concept">5-5</span>: 結果を全体へ戻す</a></li>
+                  <li><a href="#element-concept-5-6"><span class="dim-id-text-concept">5-6</span>: 重心を再確認する</a></li>
+                  <li><a href="#element-concept-5-7"><span class="dim-id-text-concept">5-7</span>: 重要変数へ絞り込む</a></li>
+                  <li><a href="#element-concept-5-8"><span class="dim-id-text-concept">5-8</span>: 資源配分先を決定する</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details class="toc-details">
+              <summary><a href="#subtheme-concept-6"><span class="dim-id-text-concept">6-0</span>: 専門チーム分岐展開</a></summary>
+              <ul>
+                  <li><a href="#element-concept-6-1"><span class="dim-id-text-concept">6-1</span>: 開発チームが展開する</a></li>
+                  <li><a href="#element-concept-6-2"><span class="dim-id-text-concept">6-2</span>: 営業チームが展開する</a></li>
+                  <li><a href="#element-concept-6-3"><span class="dim-id-text-concept">6-3</span>: マーケが展開する</a></li>
+                  <li><a href="#element-concept-6-4"><span class="dim-id-text-concept">6-4</span>: 人事チームが展開する</a></li>
+                  <li><a href="#element-concept-6-5"><span class="dim-id-text-concept">6-5</span>: 法務チームが展開する</a></li>
+                  <li><a href="#element-concept-6-6"><span class="dim-id-text-concept">6-6</span>: 情シスが展開する</a></li>
+                  <li><a href="#element-concept-6-7"><span class="dim-id-text-concept">6-7</span>: 経営企画が統合する</a></li>
+                  <li><a href="#element-concept-6-8"><span class="dim-id-text-concept">6-8</span>: 全体DMMへ紐づける</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details class="toc-details">
+              <summary><a href="#subtheme-concept-7"><span class="dim-id-text-concept">7-0</span>: 組織論理論接続</a></summary>
+              <ul>
+                  <li><a href="#element-concept-7-1"><span class="dim-id-text-concept">7-1</span>: 合理的アクターで見る</a></li>
+                  <li><a href="#element-concept-7-2"><span class="dim-id-text-concept">7-2</span>: 組織過程として見る</a></li>
+                  <li><a href="#element-concept-7-3"><span class="dim-id-text-concept">7-3</span>: 官僚政治として見る</a></li>
+                  <li><a href="#element-concept-7-4"><span class="dim-id-text-concept">7-4</span>: 限定合理性を考慮する</a></li>
+                  <li><a href="#element-concept-7-5"><span class="dim-id-text-concept">7-5</span>: 企業行動論と接続する</a></li>
+                  <li><a href="#element-concept-7-6"><span class="dim-id-text-concept">7-6</span>: AARで振り返る</a></li>
+                  <li><a href="#element-concept-7-7"><span class="dim-id-text-concept">7-7</span>: ダブルループで問い直す</a></li>
+                  <li><a href="#element-concept-7-8"><span class="dim-id-text-concept">7-8</span>: SODAと接続する</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details class="toc-details">
+              <summary><a href="#subtheme-concept-8"><span class="dim-id-text-concept">8-0</span>: 議論経路記録保存</a></summary>
+              <ul>
+                  <li><a href="#element-concept-8-1"><span class="dim-id-text-concept">8-1</span>: 注目セルを記録する</a></li>
+                  <li><a href="#element-concept-8-2"><span class="dim-id-text-concept">8-2</span>: 重要化を記録する</a></li>
+                  <li><a href="#element-concept-8-3"><span class="dim-id-text-concept">8-3</span>: 除外理由を記録する</a></li>
+                  <li><a href="#element-concept-8-4"><span class="dim-id-text-concept">8-4</span>: 保留理由を記録する</a></li>
+                  <li><a href="#element-concept-8-5"><span class="dim-id-text-concept">8-5</span>: セル間関係を残す</a></li>
+                  <li><a href="#element-concept-8-6"><span class="dim-id-text-concept">8-6</span>: 反論を記録する</a></li>
+                  <li><a href="#element-concept-8-7"><span class="dim-id-text-concept">8-7</span>: 重心移動を記録する</a></li>
+                  <li><a href="#element-concept-8-8"><span class="dim-id-text-concept">8-8</span>: 議事録と紐づける</a></li>
+              </ul>
+            </details>
+          </li>
+
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    
+    <main>
+      <section id="summary">
+        <h2 class="part-title">全体概要</h2>
+        <div class="theme-card" style="border-left-color: var(--primary)">
+          <div class="theme-badge">全体概要</div>
+          <h3 class="theme-card-title">DMM型ネットアセスメント</h3>
+          <div class="theme-card-body">
+            <p>本DMMは、㈱陽雄が整理したDMM64法人応用構想を、「DMM型ネットアセスメント」を中心命題として再構造化したものです。8つのサブテーマは、自社構想(北)、自社分析(北東)、競合分析(東)、差分分析(南東)、重心セル抽出(南)、専門チーム分岐(南西)、組織論との接続(西)、議論経路記録(北西)という時計回りの流れを持ち、認知拡大から収束へ至るワークショップ設計の全体像を表しています。各サブテーマの8要素は、アリソンの三モデルや限定合理性、AAR、ダブルループ学習といった既存の組織論・意思決定論を、DMM64という一つのAI支援型思考地図の中に統合する具体的操作として展開されており、DMM64が単なる発想支援ツールではなく、組織の意思決定過程そのものを可視化し、後から再検討可能にするシステムであるという報告書の核心的主張を、64のセル全体で裏づけています。</p>
+          </div>
+        </div>
+      </section>
+      
+      
+      <section id="center-theme-section" class="part-section">
+        <h2 class="part-title">中核テーマ</h2>
+        
+      <div class="theme-card primary-theme-card" id="subtheme-0-0-direct">
+        <div class="theme-badge">核心</div>
+        <h3 class="theme-card-title">0-0: DMM型ネットアセスメント</h3>
+        <div class="theme-card-body">
+          
+          
+          
+          <p>自社・競合・自社構想をそれぞれ中心軸としてDMM64上に展開し、その差分、変化、重心移動、除外変数、議論経路を比較しながら、最終的に組織の資源配分と行動方針へ収束させる知の技法です。DMM64は答えを出す装置ではなく、人間と組織がどのように考え、何を重視し、何を捨て、どこに重心を置いたかを記録し、後から再検討可能にする思考基盤として位置づけられます。</p>
+          
+        </div>
+      </div>
+        <div class="subtheme-group" style="margin-top: 2rem;">
+          <h3 class="subtheme-title" id="subtheme-0-1-direct"><span class="element-id element-id-concept">0-1</span> 自社構想DMM</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>自社がこれから何をなしたいのか、どのような未来を描くのかを中心に据えて展開するDMMです。ミッション、中期構想、新規事業、顧客価値、社会的意義、組織変革、AI活用、投資すべき領域、撤退すべき領域などを配置し、現状分析にとどまらず自社が目指す方向性そのものを構造化して、他のDMMに重ね合わせる基点とします。</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group" style="margin-top: 2rem;">
+          <h3 class="subtheme-title" id="subtheme-0-2-direct"><span class="element-id element-id-concept">0-2</span> 自社DMM分析</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>自社を中心軸に置き、強み、弱み、経営資源、人材、技術、顧客基盤、組織文化、意思決定構造、制約条件、現在の戦略、将来の構想、組織内の摩擦などを展開するブルーチーム側の分析です。単なる自己評価にとどまらず、組織内部の非合理な要素まで含めて可視化することで、実行可能性を伴う自社理解を目指します。</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group" style="margin-top: 2rem;">
+          <h3 class="subtheme-title" id="subtheme-0-3-direct"><span class="element-id element-id-concept">0-3</span> 競合DMM分析</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>競合を中心軸に置き、競合の強み、弱み、資源配分、顧客接点、市場での位置、技術力、組織文化、意思決定の速さ、想定される戦略、競合の制約、競合が見落としている可能性、競合が次に取る可能性のある行動などを展開するレッドチーム側の分析です。相手の視点から自社の前提を点検するレッドチーミング的発想をDMM構造の中に組み込みます。</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group" style="margin-top: 2rem;">
+          <h3 class="subtheme-title" id="subtheme-0-4-direct"><span class="element-id element-id-concept">0-4</span> 自社競合差分分析</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>自社DMMと競合DMMを比較し、自社が重視するが競合が軽視している要素、競合が重視するが自社が見落としている要素、両者の制約の違い、意思決定速度の違い、資源配分や顧客理解の違い、組織内摩擦や将来構想の違いを抽出する段階です。単純なSWOT分析より動的で相対的な、構造同士のずれに着目した組織的な競争認識を可能にします。</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group" style="margin-top: 2rem;">
+          <h3 class="subtheme-title" id="subtheme-0-5-direct"><span class="element-id element-id-concept">0-5</span> 重心セル抽出収束</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>展開された多数のセルの中から重要な重心セルを選び、それを新たな中心に据えて再展開する運用です。認知を拡大した後、どの変数が本当に重要か、どの論点は保留・除外するか、どこに人材や予算を配分するかを絞り込みます。全体俯瞰と部分深掘りを往還しながら、最終的に組織の資源配分と行動方針へ収束させる段階でもあります。</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group" style="margin-top: 2rem;">
+          <h3 class="subtheme-title" id="subtheme-0-6-direct"><span class="element-id element-id-concept">0-6</span> 専門チーム分岐展開</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>全体DMMの中で浮上した重心セルを、開発、営業、マーケティング、人事、法務、情報システム、経営企画、財務などの各専門チームがそれぞれ中心に据えて個別に深掘りするプロセスです。各チームの検討結果を必ず全体DMMへ紐づけて戻すことで、専門分化と全体統合を両立させ、戦略軸が失われることを防ぎます。</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group" style="margin-top: 2rem;">
+          <h3 class="subtheme-title" id="subtheme-0-7-direct"><span class="element-id element-id-concept">0-7</span> 組織論理論接続</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>アリソンの三モデル、サイモンの限定合理性、サイアート＝マーチの企業行動論、AAR、ダブルループ学習、SODAと認知マッピング、レッドチーミング、意思決定ログなど、既存の組織論・意思決定論とDMM64を接続する視点です。分散して存在するこれらの手法を、一つの視覚的・反復可能なAI支援型思考地図へ統合する可能性を持ちます。</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group" style="margin-top: 2rem;">
+          <h3 class="subtheme-title" id="subtheme-0-8-direct"><span class="element-id element-id-concept">0-8</span> 議論経路記録保存</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>完成したDMMに至るまでの議論を、音声記録や議事録と紐づけて残す運用です。どのセルが最初に注目され、どのセルが後から重要になり、どのセルが除外・保留され、どのセル同士が関係づけられ、重心がどこで移ったかを記録することで、DMM64を静的な図ではなく、議論経路を持つ再検討可能な思考地図として機能させます。</p>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+      <section id="part-active" class="part-section">
+        <h2 class="part-title">展開テーマ</h2>
+        <div class="subtheme-group">
+          <h3 class="subtheme-title" id="subtheme-concept-1"><span class="element-id element-id-concept">1-0</span> 自社構想DMM</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>自社がこれから何をなしたいのか、どのような未来を描くのかを中心に据えて展開するDMMです。ミッション、中期構想、新規事業、顧客価値、社会的意義、組織変革、AI活用、投資すべき領域、撤退すべき領域などを配置し、現状分析にとどまらず自社が目指す方向性そのものを構造化して、他のDMMに重ね合わせる基点とします。</p>
+              
+            </div>
+          </div>
+          <div class="elements-grid">
+            <div class="element-card" id="element-concept-1-1">
+              <div class="element-header">
+                <span class="element-id element-id-concept">1-1</span>
+                <span class="element-name">ミッションを定義する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>ミッションを定義するとは、自社構想DMMの起点として、自社がなぜ存在し、何を実現したいのかという根本的な目的意識を明確に言語化する取り組みです。中期構想や新規事業、投資領域の選定など、他の構想要素すべてが立ち返るべき軸となり、自社構想全体に一貫性と方向性を与える基礎作業として位置づけられます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-1-2">
+              <div class="element-header">
+                <span class="element-id element-id-concept">1-2</span>
+                <span class="element-name">中期構想を策定する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>中期構想を策定するとは、自社構想DMMにおいて、ミッションで定めた根本目的を土台に、数年先を見据えた具体的な方向性へと落とし込む取り組みです。新規事業や顧客価値の再定義、投資領域の選定といった各要素を橋渡しする中間層として機能し、抽象的な理念と実行段階との間をつなぐ役割を担います。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-1-3">
+              <div class="element-header">
+                <span class="element-id element-id-concept">1-3</span>
+                <span class="element-name">新規事業を構想する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>新規事業を構想するとは、自社構想DMMにおいて、ミッションや中期構想、再定義された顧客価値を踏まえながら、これまでにない事業機会を具体的に描き出す取り組みです。既存事業の延長線上にとどまらず、社会的意義や組織変革とも連動させることで、将来の競争優位につながる種を見出す段階として位置づけられます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-1-4">
+              <div class="element-header">
+                <span class="element-id element-id-concept">1-4</span>
+                <span class="element-name">顧客価値を再定義する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>顧客価値を再定義するとは、自社構想DMMにおいて、ミッションや中期構想を踏まえながら、顧客にとって本当に意味のある価値とは何かを改めて問い直す取り組みです。既存の提供価値を前提視せず、市場や顧客ニーズの変化に照らして見直すことで、新規事業や組織変革の方向性を規定する基準として位置づけられます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-1-5">
+              <div class="element-header">
+                <span class="element-id element-id-concept">1-5</span>
+                <span class="element-name">社会的意義を検討する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>社会的意義を検討するとは、自社構想DMMにおいて、ミッションや新規事業構想が単なる収益追求にとどまらず、社会にどのような価値をもたらすのかを問い直す取り組みです。顧客価値や組織変革との整合性を確認しながら、自社の存在意義を外部の視点からも捉え直す重要な工程として位置づけられます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-1-6">
+              <div class="element-header">
+                <span class="element-id element-id-concept">1-6</span>
+                <span class="element-name">組織変革を構想する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>組織変革を構想するとは、自社構想DMMにおいて、ミッションや新規事業、社会的意義といった構想を実際に動かすため、組織の体制や文化そのものをどう変えていくべきかを描く取り組みです。理念を掲げるだけでなく、実行を支える組織基盤を再設計する視点として、構想全体の実現可能性を左右します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-1-7">
+              <div class="element-header">
+                <span class="element-id element-id-concept">1-7</span>
+                <span class="element-name">投資領域を選定する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>投資領域を選定するとは、自社構想DMMにおいて、ミッションや中期構想、新規事業構想を実現するために、限られた経営資源をどの領域に重点的に振り向けるべきかを見極める取り組みです。撤退すべき領域との対比の中で優先順位を明確にし、抽象的な構想を具体的な資源配分の判断へとつなげる役割を担います。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-1-8">
+              <div class="element-header">
+                <span class="element-id element-id-concept">1-8</span>
+                <span class="element-name">撤退領域を判断する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>撤退領域を判断するとは、自社構想DMMにおいて、ミッションや中期構想と照らし合わせながら、もはや自社が注力すべきでない事業や領域を見極める取り組みです。投資領域の選定と表裏一体の関係にあり、限られた経営資源を将来の構想へ集中させるための、勇気を伴う重要な意思決定として位置づけられます。</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group">
+          <h3 class="subtheme-title" id="subtheme-concept-2"><span class="element-id element-id-concept">2-0</span> 自社DMM分析</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>自社を中心軸に置き、強み、弱み、経営資源、人材、技術、顧客基盤、組織文化、意思決定構造、制約条件、現在の戦略、将来の構想、組織内の摩擦などを展開するブルーチーム側の分析です。単なる自己評価にとどまらず、組織内部の非合理な要素まで含めて可視化することで、実行可能性を伴う自社理解を目指します。</p>
+              
+            </div>
+          </div>
+          <div class="elements-grid">
+            <div class="element-card" id="element-concept-2-1">
+              <div class="element-header">
+                <span class="element-id element-id-concept">2-1</span>
+                <span class="element-name">自社の強みを整理する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>自社の強みを整理するとは、自社DMM分析において、経営資源や人材、技術、顧客基盤といった要素を踏まえながら、他社との比較で優位に立てる点を明確に言語化する取り組みです。ブルーチーム側の分析の起点として、弱みや組織内摩擦とあわせて捉えることで、実行可能性を伴う自社理解の土台となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-2-2">
+              <div class="element-header">
+                <span class="element-id element-id-concept">2-2</span>
+                <span class="element-name">自社の弱みを直視する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>自社の弱みを直視するとは、自社DMM分析において、経営資源や人材、組織文化の限界、組織内摩擦といった不都合な現実から目を背けず、率直に見つめる取り組みです。都合の良い自己評価にとどまらず、強みと表裏一体の構造的な課題として認識することで、実行可能性を伴う組織理解を築く土台とします。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-2-3">
+              <div class="element-header">
+                <span class="element-id element-id-concept">2-3</span>
+                <span class="element-name">経営資源を棚卸しする</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>経営資源を棚卸しするとは、自社DMM分析において、人材、技術、顧客基盤、資金といった保有資源を体系的に洗い出し、現状を正確に把握する取り組みです。強みや弱みを裏づける客観的な基盤情報として機能し、感覚的な自己評価に頼ることなく、実態に即した組織理解を可能にする分析の出発点となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-2-4">
+              <div class="element-header">
+                <span class="element-id element-id-concept">2-4</span>
+                <span class="element-name">人材構成を分析する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>人材構成を分析するとは、自社DMM分析において、経営資源としての人材を対象に、スキルや専門性、年齢構成、部門ごとの配置状況などを具体的に把握する取り組みです。技術力や組織文化とも密接に関わる要素であり、強みと弱みの双方を人材面から裏づける重要な分析の一つとして丁寧に位置づけられます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-2-5">
+              <div class="element-header">
+                <span class="element-id element-id-concept">2-5</span>
+                <span class="element-name">技術力を評価する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>技術力を評価するとは、自社DMM分析において、保有する技術の水準や独自性、競合との差別化要因を客観的に見極める取り組みです。人材構成や経営資源とも密接に連動する要素であり、自社の技術的優位性がどの程度まで将来の事業構想を支えられるのかを判断するための、重要な材料の一つとなります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-2-6">
+              <div class="element-header">
+                <span class="element-id element-id-concept">2-6</span>
+                <span class="element-name">顧客基盤を把握する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>顧客基盤を把握するとは、自社DMM分析において、現在取引のある顧客層の規模や属性、依存度、関係性の深さなどを具体的に整理する取り組みです。技術力や強みが実際の市場でどれだけ支持されているのかを裏づける情報であり、自社の立ち位置を実態に即して理解するための重要な基礎資料となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-2-7">
+              <div class="element-header">
+                <span class="element-id element-id-concept">2-7</span>
+                <span class="element-name">組織文化を検証する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>組織文化を検証するとは、自社DMM分析において、意思決定のスピード、上下関係のあり方、挑戦への許容度といった目に見えにくい組織の気質や価値観を捉え直す取り組みです。人材や経営資源の活かし方を左右する土台であり、組織内摩擦の背景を理解するための重要な手がかりとしても位置づけられます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-2-8">
+              <div class="element-header">
+                <span class="element-id element-id-concept">2-8</span>
+                <span class="element-name">組織内摩擦を可視化する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>組織内摩擦を可視化するとは、自社ＤＭＭ分析の枠組みにおいて、部門間の認識の齟齬や意思決定の停滞要因を客観的な構造として描き出すことを指します。組織内に潜む非合理な対立や情報の偏りを明示することで、単なる対立関係として処理するのではなく、戦略的な議論の対象へと転換させます。これにより、組織学習を促進し、持続可能な意思決定プロセスを構築するための重要な分析基盤となります。</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group">
+          <h3 class="subtheme-title" id="subtheme-concept-3"><span class="element-id element-id-concept">3-0</span> 競合DMM分析</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>競合を中心軸に置き、競合の強み、弱み、資源配分、顧客接点、市場での位置、技術力、組織文化、意思決定の速さ、想定される戦略、競合の制約、競合が見落としている可能性、競合が次に取る可能性のある行動などを展開するレッドチーム側の分析です。相手の視点から自社の前提を点検するレッドチーミング的発想をDMM構造の中に組み込みます。</p>
+              
+            </div>
+          </div>
+          <div class="elements-grid">
+            <div class="element-card" id="element-concept-3-1">
+              <div class="element-header">
+                <span class="element-id element-id-concept">3-1</span>
+                <span class="element-name">競合の強みを分析する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>競合の強みを分析する要素は、競合が市場においてなぜ優位性を確立しているのか、その根源的な要因を網羅的かつ構造的に特定するプロセスです。単なる表面的な特徴の列挙にとどまらず、競合が持つ資源、技術力、あるいは組織の意思決定の質などを総合的に評価し、相対的な競争優位性を明らかにします。自社の事業構想や戦略との対比を前提とすることで、競合の優位性を冷静に理解し、今後の戦略立案の基礎となる現実的な知見を得るための不可欠な分析工程です。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-3-2">
+              <div class="element-header">
+                <span class="element-id element-id-concept">3-2</span>
+                <span class="element-name">競合の弱みを推定する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>競合の弱みを推定することは、自社と競合の構造を比較検討するDMM型ネットアセスメントにおいて、相手の脆弱性や戦略的空白地帯を特定し、自社の優位性を確立するための不可欠なプロセスです。単なる表面的な情報収集に留まらず、競合の資源配分や意思決定の偏りから潜在的な欠点を論理的に導き出すことで、市場における競争優位を維持するための重要な示唆を得ることが可能となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-3-3">
+              <div class="element-header">
+                <span class="element-id element-id-concept">3-3</span>
+                <span class="element-name">資源配分を推測する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>競合ＤＭＭ分析における資源配分を推測するとは、競合他社が自社の競争優位を確立するために、予算や人員、技術開発といった経営資源をどの事業領域や課題に重点的に投入しているかを論理的に読み解く行為です。競合の行動履歴や市場でのプレゼンスからその配分傾向を可視化することで、彼らが将来的な成長や市場防衛に対してどこに重きを置いているのかを解明し、自社の対抗戦略を検討するための不可欠な前提知識となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-3-4">
+              <div class="element-header">
+                <span class="element-id element-id-concept">3-4</span>
+                <span class="element-name">市場での位置を把握する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>市場での位置を把握するとは、競合ＤＭＭ分析の枠組みにおいて、対象となる企業が業界の力学の中でどの立ち位置を占めているのかを客観的に特定するプロセスです。自社の強みや弱みを整理するだけではなく、市場全体に対する競合の優位性や影響力の所在を明確化することで、競争環境における戦略的な位置取りを多角的に評価する重要な基盤となります。この把握は、組織の意思決定を最適化し、将来の競争優位性を構築するための不可欠な分析工程と言えます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-3-5">
+              <div class="element-header">
+                <span class="element-id element-id-concept">3-5</span>
+                <span class="element-name">競合の技術力を評価する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>競合DMM分析において、相手方の技術力を多角的に評価することは、自社との比較優位性や市場における競争環境を正確に把握する上で不可欠なプロセスです。単なる性能比較に留まらず、競合がどのような技術基盤や開発能力を背景に戦略を遂行しているかを客観的に分析し、意思決定の論理的根拠を明確にするための重要な検討項目となります。この評価を通じて、組織は競合の強みや弱みを体系的に理解し、自社の資源配分や戦略の方向性を精緻化するための知見を得ることを目的としています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-3-6">
+              <div class="element-header">
+                <span class="element-id element-id-concept">3-6</span>
+                <span class="element-name">意思決定速度を推定する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>競合DMM分析において意思決定速度を推定することは、競合他社が市場の変化や自社の動向に対してどの程度の時間軸で反応し、組織として迅速な判断を下せているかを論理的に推論する重要な作業です。戦略的な重要事項の決定に至るまでのプロセスや硬直性を分析することで、競合の組織的な機動力を把握し、将来的な先手を打つための貴重な洞察を得ることを目的としています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-3-7">
+              <div class="element-header">
+                <span class="element-id element-id-concept">3-7</span>
+                <span class="element-name">想定戦略を検討する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>競合DMM分析において、この要素は収集した強みや弱み、技術力や市場位置などの情報を総合し、競合他社が今後どのような方針に基づいて事業を展開するかという見通しを立てる重要な局面です。単なる現状認識に留まらず、競合が描く未来図を論理的に予測することで、自社の次なる一手や戦略的な防衛策を導き出すための土台となる思考プロセスを指しています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-3-8">
+              <div class="element-header">
+                <span class="element-id element-id-concept">3-8</span>
+                <span class="element-name">競合の盲点を探る</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>競合の盲点を探るとは、表面的な指標や一般的な市場認識の裏側に潜む、未活用または軽視されている戦略的機会を特定する作業です。競合が強みや弱みを分析する過程で意識的に、あるいは無意識に除外した変数を捉え、そこに自社の資源配分や意思決定の重心を置くことで、競争優位性を構築するための重要な分析視点となります。単なる比較を超え、構造の隙間を鋭く突くことで、市場内での独自の優位性を明確に導き出す極めて高度な知的プロセスといえます。</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group">
+          <h3 class="subtheme-title" id="subtheme-concept-4"><span class="element-id element-id-concept">4-0</span> 自社競合差分分析</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>自社DMMと競合DMMを比較し、自社が重視するが競合が軽視している要素、競合が重視するが自社が見落としている要素、両者の制約の違い、意思決定速度の違い、資源配分や顧客理解の違い、組織内摩擦や将来構想の違いを抽出する段階です。単純なSWOT分析より動的で相対的な、構造同士のずれに着目した組織的な競争認識を可能にします。</p>
+              
+            </div>
+          </div>
+          <div class="elements-grid">
+            <div class="element-card" id="element-concept-4-1">
+              <div class="element-header">
+                <span class="element-id element-id-concept">4-1</span>
+                <span class="element-name">重視要素の差を抽出する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>自社と競合の戦略を比較分析する際、双方が事業遂行においてどの変数を重要視しているか、その優先順位や重み付けの差異を客観的に抽出するプロセスです。両者の戦略的な思考の枠組みを構造化して並べることで、単なる表面的な情報比較にとどまらず、組織が何に注力し何を軽視しているのかという認知構造の違いを浮き彫りにし、戦略上の優位性や脆弱性を再評価するための重要な判断基盤となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-4-2">
+              <div class="element-header">
+                <span class="element-id element-id-concept">4-2</span>
+                <span class="element-name">見落とし要素を発見する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>自社と競合の分析結果を重ね合わせる本プロセスにおいて、見落とし要素を発見することは、戦略的な盲点を可視化し、組織の思考の偏りを修正するために極めて重要です。単なる情報の整理に留まらず、競合の視点を導入することで、自社が軽視していた市場の動向や経営資源の重要性を再認識し、意思決定の質を向上させるための不可欠な分析工程として機能します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-4-3">
+              <div class="element-header">
+                <span class="element-id element-id-concept">4-3</span>
+                <span class="element-name">制約の違いを比較する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>自社と競合の戦略的差異を明らかにするために、事業運営における物理的や組織的な制限事項の相違を比較検討する項目です。単なる業務上の制約にとどまらず、市場環境や資源的背景から生じる独自の制約条件を相互に突き合わせることで、競合と比較した際の自社の特有の強みや市場における立ち位置の脆弱性を客観的に評価することが可能となります。この分析を通じて、意思決定の根拠となる制約の有無やその深刻度を可視化し、組織としての戦略的な判断をより緻密かつ合理的に導き出すための重要な足掛かりを形成します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-4-4">
+              <div class="element-header">
+                <span class="element-id element-id-concept">4-4</span>
+                <span class="element-name">意思決定速度を比較する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>意思決定速度を比較する本要素は、自社と競合の経営判断プロセスを対照し、組織の俊敏性と適応能力の差異を可視化する重要な指標です。DMM型ネットアセスメントにおいて、情報の収集から結論に至るまでの時間的ラグや、意思決定の階層構造を明確に定義することで、競合に対する戦略的優位性や現状の組織的課題を浮き彫りにします。これは単なる比較にとどまらず、将来的な競争力の源泉を特定し、より迅速かつ的確な戦略実行を実現するための本質的な分析です。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-4-5">
+              <div class="element-header">
+                <span class="element-id element-id-concept">4-5</span>
+                <span class="element-name">資源配分の違いを見る</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>資源配分の違いを見ることは、自社と競合が保有する経営資源をどのような優先順位で配置しているのかを比較分析する重要な工程です。戦略実現に向けた資金や人材の投入先を可視化し、競合との構造的な差異を明確にすることで、企業としての強みや弱みを客観的に把握し、優位性を確保するための意思決定を強力に支援します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-4-6">
+              <div class="element-header">
+                <span class="element-id element-id-concept">4-6</span>
+                <span class="element-name">顧客理解の差を測る</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>顧客理解の差を測るとは、自社と競合がそれぞれ対象とする市場や顧客層をどのように捉え、その認知にどのような差異が存在しているかを明確にするためのプロセスです。DMM型ネットアセスメントにおいて、各社の情報分析の前提となっている顧客像を構造化し、両者の視点を重ね合わせることで、認識のズレや見落としを浮き彫りにします。これにより、単なる定性的な判断を超えて、組織間で戦略的な議論を深めるための重要な論点として活用されます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-4-7">
+              <div class="element-header">
+                <span class="element-id element-id-concept">4-7</span>
+                <span class="element-name">組織摩擦を比較する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>組織摩擦を比較するとは、自社と競合の戦略や運営手法を対比させる過程で生じる、内部的な軋轢や認識の乖離を可視化し分析する作業です。この要素は自社競合差分分析の一環として、各組織の意思決定や資源配分の違いがどのような抵抗や課題を生成しているかを精査するために不可欠な視点を提供します。組織の非効率さや停滞の源泉を特定することで、競争優位を確保するための建設的な議論へと繋げる役割を担っています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-4-8">
+              <div class="element-header">
+                <span class="element-id element-id-concept">4-8</span>
+                <span class="element-name">将来構想の差を比較する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>将来構想の差を比較するとは、自社と競合が描く長期的な展望や戦略的な到達点の乖離を明示し、組織が目指すべき進路の妥当性を評価する行為です。静的な現状把握に留まらず、両者が抱く構想の構造的な違いを重ね合わせることで、戦略的優位性の所在や見落とされていた成長機会を浮き彫りにし、意思決定の質を高めるための動的な分析環境を構築するプロセスの一環です。</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group">
+          <h3 class="subtheme-title" id="subtheme-concept-5"><span class="element-id element-id-concept">5-0</span> 重心セル抽出収束</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>展開された多数のセルの中から重要な重心セルを選び、それを新たな中心に据えて再展開する運用です。認知を拡大した後、どの変数が本当に重要か、どの論点は保留・除外するか、どこに人材や予算を配分するかを絞り込みます。全体俯瞰と部分深掘りを往還しながら、最終的に組織の資源配分と行動方針へ収束させる段階でもあります。</p>
+              
+            </div>
+          </div>
+          <div class="elements-grid">
+            <div class="element-card" id="element-concept-5-1">
+              <div class="element-header">
+                <span class="element-id element-id-concept">5-1</span>
+                <span class="element-name">重要セルを選定する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>重要セルを選定する行為は、膨大に展開された思考の広がりから、戦略の核心となる要素を抽出し、議論の焦点へと収束させる極めて重要な判断プロセスです。これは単なる情報の取捨選択ではなく、組織の意思決定において優先すべき論点を特定し、資源配分の基盤を構築する作業を意味します。AIによる構造化を足掛かりとしつつ、最終的には人間が責任を持って意義ある変数を定義し、分析の精度を最大限に高めていくための不可欠な段階です。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-5-2">
+              <div class="element-header">
+                <span class="element-id element-id-concept">5-2</span>
+                <span class="element-name">重視理由を議論する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>この要素は、多様な変数から重要セルを選定する過程において、特定の要素をなぜ優先すべきなのかという論理的根拠を明確化するための対話の場です。単なる情報の羅列ではなく、組織としてどのような戦略的判断に基づき、どの論点に重心を置くべきかという評価軸を共有することで、意思決定の妥当性を高め、後の資源配分の最適化に向けた合意形成を促進する重要なプロセスとなります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-5-3">
+              <div class="element-header">
+                <span class="element-id element-id-concept">5-3</span>
+                <span class="element-name">セルを中心に再展開する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>重心セルを中心に再展開するプロセスは、重要度や優先順位を絞り込んだ中心的な概念を核として、議論や分析の枠組みを構造的に再構築することを指します。これは散漫になりがちな発想を特定の論点に集中させ、情報の密度を高めるための重要な工程です。中心を再定義することで、組織全体の認識を同期させ、後続の意思決定における一貫性と論理性、および戦略的な継続性を確実に担保するための知的基盤として機能します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-5-4">
+              <div class="element-header">
+                <span class="element-id element-id-concept">5-4</span>
+                <span class="element-name">専門チームで深掘りする</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>DMM型ネットアセスメントにおけるこの要素は、抽出された重要セルに対して特定の専門知見を持つメンバーが集結し、その論点の背景や因果関係を詳細に分析するプロセスを指します。AIが提示した言語的相関関係を、組織の文脈や戦略的目的に照らし合わせ、多角的な視点から解像度を高めることで、意思決定の根拠をより強固なものへと昇華させる役割を担っています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-5-5">
+              <div class="element-header">
+                <span class="element-id element-id-concept">5-5</span>
+                <span class="element-name">結果を全体へ戻す</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>重心セル抽出収束という一連の分析プロセスを経て導き出された重要な結論や、絞り込まれた特定の変数を、検討の出発点である全体図へ改めて組み戻すための統合フェーズを指します。局所的な深掘りで得られた知見を全体構造の中で再配置することにより、当初の論点や戦略構想全体との整合性を検証し、組織内における意思決定の文脈を再構築する役割を担っています。これにより分析結果が孤立せず、全体最適に向けた新たな指針として反映されます。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-5-6">
+              <div class="element-header">
+                <span class="element-id element-id-concept">5-6</span>
+                <span class="element-name">重心を再確認する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>重心を再確認するとは、議論や分析の過程で拡散しがちな検討の論点を、当初の目的や中核となる戦略へ改めて引き戻し、思考の整合性を確保するための重要な工程です。複雑な情報が重なるネットアセスメントにおいて、どの変数へ重点を置くべきかを再定義することで、意思決定の妥当性を高め、組織として目指すべき方向性への軌道修正を確実なものにするための極めて重要な判断プロセスとなります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-5-7">
+              <div class="element-header">
+                <span class="element-id element-id-concept">5-7</span>
+                <span class="element-name">重要変数へ絞り込む</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>重要変数へ絞り込むというプロセスは、DMM型ネットアセスメントにおいて情報の過度な拡散を抑制し、意思決定の精度を高めるための核心的な収束段階です。多角的な分析を通じて抽出された無数の要素の中から、戦略的優先順位に基づき決定的な影響力を持つ項目を厳選します。これにより、曖昧さを排し議論の重心を明確に定めることで、組織としての合意形成を促進し、限られた資源の最適配分を実現するための論理的基盤を整える極めて重要な役割を担っています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-5-8">
+              <div class="element-header">
+                <span class="element-id element-id-concept">5-8</span>
+                <span class="element-name">資源配分先を決定する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>この要素は、一連の論理的な分析プロセスを経て抽出された重要変数に基づき、組織として取り組むべき優先課題に対し、具体的な経営資源を投入する最終的な決定段階を指しています。重心セルを核とした多角的な検討の結果を反映させ、限られたリソースを最も効果的な領域へ集中させるための重要な意思決定の要所となります。議論の収束と実行の橋渡しを担うプロセスとして、組織の戦略的方向性を確定させ、具体的行動へと繋げる重要な意義を持っています。</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group">
+          <h3 class="subtheme-title" id="subtheme-concept-6"><span class="element-id element-id-concept">6-0</span> 専門チーム分岐展開</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>全体DMMの中で浮上した重心セルを、開発、営業、マーケティング、人事、法務、情報システム、経営企画、財務などの各専門チームがそれぞれ中心に据えて個別に深掘りするプロセスです。各チームの検討結果を必ず全体DMMへ紐づけて戻すことで、専門分化と全体統合を両立させ、戦略軸が失われることを防ぎます。</p>
+              
+            </div>
+          </div>
+          <div class="elements-grid">
+            <div class="element-card" id="element-concept-6-1">
+              <div class="element-header">
+                <span class="element-id element-id-concept">6-1</span>
+                <span class="element-name">開発チームが展開する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>DMM型ネットアセスメントにおいて、開発チームが展開するプロセスは、組織の専門知を戦略的に構造化する重要な役割を担います。技術的な知見やプロダクト開発の視点を軸として情報の分析や論点の深掘りを行うことで、全体構想に対する具体的かつ論理的な裏付けを生成し、意思決定の妥当性を高めるための基盤となります。他部門と連携しつつ思考を可視化することで、組織全体の判断精度を向上させる不可欠なプロセスです。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-6-2">
+              <div class="element-header">
+                <span class="element-id element-id-concept">6-2</span>
+                <span class="element-name">営業チームが展開する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>専門チーム分岐展開における営業チームの役割は、顧客との対話を通じて得られた市場の反応や競合動向を、組織の戦略的意思決定へと還元する重要な接点です。この要素は、単なる販売活動にとどまらず、収集した知見をDMM型ネットアセスメントの構造へ反映し、組織全体の認識を統合するための動的な情報源として機能します。現場のリアルな分析結果を多角的に構造化することで、持続可能な組織学習と的確な戦略修正を支える要としての価値を有しています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-6-3">
+              <div class="element-header">
+                <span class="element-id element-id-concept">6-3</span>
+                <span class="element-name">マーケが展開する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>DMM型ネットアセスメントにおけるマーケティングチームの展開は、組織全体の戦略的な意思決定を支援する重要な構成要素です。顧客認知や市場動向という専門的知見を構造化して組み込むことで、全体ＤＭＭの論理的整合性を高めます。単なる情報の整理にとどまらず、他部門の視点と相互に補完し合うことで、企業が競合環境において目指すべき方向性を可視化し、組織学習を促進するための不可欠な分析視点を提供しています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-6-4">
+              <div class="element-header">
+                <span class="element-id element-id-concept">6-4</span>
+                <span class="element-name">人事チームが展開する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>人事チームが展開する本要素は、DMM型ネットアセスメントの枠組みにおいて、組織の人的資本という観点から全体戦略の整合性を検証する役割を担います。専門チームによる分岐展開の一環として、人材配置や評価の適正化を情報分析の変数に組み込み、経営課題の解決に向けた組織的な意志決定を支援します。個別の機能軸が戦略的な全体図へ収束する過程において、人的資源の最適化という視点を組織知として定着させることが、この要素の本質的な意義です。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-6-5">
+              <div class="element-header">
+                <span class="element-id element-id-concept">6-5</span>
+                <span class="element-name">法務チームが展開する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>DMM型ネットアセスメントにおける法務チームの展開は、組織が抱える潜在的な法的リスクやコンプライアンス上の課題を専門的知見から網羅的に可視化する役割を担います。法的要件を戦略の前提条件として組み込み、他部門の動向と照らし合わせることで、組織全体の意思決定プロセスに法的な妥当性と安全性を付与し、複雑な事業環境下で安定した意思決定を行うための不可欠な論理的基盤を構築します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-6-6">
+              <div class="element-header">
+                <span class="element-id element-id-concept">6-6</span>
+                <span class="element-name">情シスが展開する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>DMM型ネットアセスメントにおいて、情報システム部門が主体となり分析を展開する役割を指します。技術インフラやデータ管理の専門的知見を活かし、組織全体の情報基盤やデジタル変革の進捗状況を客観的に評価する役割を担います。他の専門チームと連携しながら、経営層の意思決定を支えるための論理的な構造化を技術的な側面から推し進めることで、組織の戦略的な判断精度を向上させる重要な役割を果たします。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-6-7">
+              <div class="element-header">
+                <span class="element-id element-id-concept">6-7</span>
+                <span class="element-name">経営企画が統合する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>DMM型ネットアセスメントにおいて、各専門チームが個別に展開した分析結果を経営企画が統合する役割を担います。組織内に分散した知見や議論の経路を整理し、全体的な戦略的整合性を確保することで、意思決定の質を高めるための重要な中核機能です。個別の視点を全体最適の観点から統合し、組織学習の基盤を形成します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-6-8">
+              <div class="element-header">
+                <span class="element-id element-id-concept">6-8</span>
+                <span class="element-name">全体DMMへ紐づける</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>専門チームが各々の領域で独自に展開した分析結果を、全体ＤＭＭへ紐づけることは、組織的な思考の整合性を図るために不可欠な工程です。部門ごとに分岐した細分化された議論を、中心的な戦略構造へと統合し、情報の分断を防ぐ役割を担います。個別の専門的知見を全体像の中で再定義し、組織全体の意思決定を可視化することで、一貫性のある戦略的思考の継続性と、情報の全体的な収束を確実に実現する重要な統合点となります。</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group">
+          <h3 class="subtheme-title" id="subtheme-concept-7"><span class="element-id element-id-concept">7-0</span> 組織論理論接続</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>アリソンの三モデル、サイモンの限定合理性、サイアート＝マーチの企業行動論、AAR、ダブルループ学習、SODAと認知マッピング、レッドチーミング、意思決定ログなど、既存の組織論・意思決定論とDMM64を接続する視点です。分散して存在するこれらの手法を、一つの視覚的・反復可能なAI支援型思考地図へ統合する可能性を持ちます。</p>
+              
+            </div>
+          </div>
+          <div class="elements-grid">
+            <div class="element-card" id="element-concept-7-1">
+              <div class="element-header">
+                <span class="element-id element-id-concept">7-1</span>
+                <span class="element-name">合理的アクターで見る</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>合理的アクターで見るという視点は、組織を統一的な意思決定主体と見なし、特定の目標達成のために最適化された行動を選択する存在として分析する手法です。これはDMMにおける論理的分析の基盤となり、組織が情報をどのように処理し、戦略を策定しているかを客観的に評価する際の分析的な枠組みとして機能します。組織論理論接続の文脈において、他視点と比較する出発点として不可欠な概念です。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-7-2">
+              <div class="element-header">
+                <span class="element-id element-id-concept">7-2</span>
+                <span class="element-name">組織過程として見る</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>組織を単なる個人の集合や合理的アクターの集積としてではなく、定型化された手続きやルーチンの相互作用による動的な過程として捉える視点です。意思決定が組織内の標準的な作業手順や慣習、あるいは部署間の調整を経て形成されることに着目し、組織特有の変容や情報の伝達経路を構造的に可視化して分析することを目的としています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-7-3">
+              <div class="element-header">
+                <span class="element-id element-id-concept">7-3</span>
+                <span class="element-name">官僚政治として見る</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>組織内での意思決定を、単一の合理的判断の積み重ねではなく、個別の部署や個人の利害が交錯する政治的な交渉過程として捉える視点です。組織論の理論的接続において、この視点は権力構造や派閥の対立が戦略形成に与える歪みを可視化し、表面的な合理性の裏側に隠された真の意思決定の力学を解明するために極めて重要な役割を果たします。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-7-4">
+              <div class="element-header">
+                <span class="element-id element-id-concept">7-4</span>
+                <span class="element-name">限定合理性を考慮する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>限定合理性を考慮するとは、人間の認知能力や情報の収集・処理には限界があることを前提とし、完全な合理性に基づく意思決定を求めるのではなく、現実的な制約下での最適解を探求する姿勢を指します。組織論の文脈では、個人の思考の癖や情報の非対称性を許容しつつ、不完全さを組織の意思決定プロセスの中に正当な変数として組み込むことで、より実態に即した戦略的評価を実現するための不可欠な分析視点となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-7-5">
+              <div class="element-header">
+                <span class="element-id element-id-concept">7-5</span>
+                <span class="element-name">企業行動論と接続する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>企業行動論と接続するとは、個別の意思決定や戦略を単なる事象として捉えるのではなく、組織が置かれた外部環境への適応プロセスや経済的合理性を基軸とする理論的枠組みへと統合することを指します。これにより、直感的な戦略立案を超えて、組織構造や市場内での行動原理に基づいた客観的かつ体系的な分析が可能となります。DMM型ネットアセスメントにおいて本要素は、組織の意思決定の背景にある論理的根拠を明確化し、戦略の持続可能性を検証するための極めて重要な分析的視点となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-7-6">
+              <div class="element-header">
+                <span class="element-id element-id-concept">7-6</span>
+                <span class="element-name">AARで振り返る</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>事後検討による学習、すなわちアフターアクションレビューを用いて、意思決定プロセスを客観的に振り返るための重要な分析手法です。組織論の理論枠組みを接続し、実行した判断がどのような論理に基づいていたかを検証することで、認知の偏りや除外した変数を特定し、次なる意思決定の精度を高めるために不可欠な役割を担います。単なる結果の評価に留まらず、思考の過程を再構築する動的な組織学習の要として機能します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-7-7">
+              <div class="element-header">
+                <span class="element-id element-id-concept">7-7</span>
+                <span class="element-name">ダブルループで問い直す</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>ダブルループで問い直すことは、組織論の文脈において、単なる表層的な手段の改善にとどまらず、その意思決定を支えている大前提や組織の根本的な価値観そのものを検証し、再定義する高度な学習プロセスを指します。このアプローチにより、既存の枠組みを一度解体して構造を根本から見つめ直し、組織の認知や行動様式をより適応的で深いレベルへと変容させるための不可欠な思考回路として機能します。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-7-8">
+              <div class="element-header">
+                <span class="element-id element-id-concept">7-8</span>
+                <span class="element-name">SODAと接続する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>組織論理論接続におけるSODAとの接続とは、主観的解釈や認知の枠組みを構造化する手法をＤＭＭに取り込み、意思決定の背景にある因果関係を可視化する試みです。経営陣や現場が抱く多様な認識を論理的に体系化し、組織的な合意形成を支援することで、単なる議論の集積を超えた動的な戦略分析環境の構築を可能にします。この統合的なアプローチにより、複雑な状況下での意思決定過程を多角的な視点から精緻に検討することが可能となります。</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtheme-group">
+          <h3 class="subtheme-title" id="subtheme-concept-8"><span class="element-id element-id-concept">8-0</span> 議論経路記録保存</h3>
+          <div class="theme-card sub-theme-card">
+            <div class="theme-card-body">
+              
+              
+              
+              <p>完成したDMMに至るまでの議論を、音声記録や議事録と紐づけて残す運用です。どのセルが最初に注目され、どのセルが後から重要になり、どのセルが除外・保留され、どのセル同士が関係づけられ、重心がどこで移ったかを記録することで、DMM64を静的な図ではなく、議論経路を持つ再検討可能な思考地図として機能させます。</p>
+              
+            </div>
+          </div>
+          <div class="elements-grid">
+            <div class="element-card" id="element-concept-8-1">
+              <div class="element-header">
+                <span class="element-id element-id-concept">8-1</span>
+                <span class="element-name">注目セルを記録する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>注目セルを記録する機能は、デジタル・マンダラ・マトリクス上で展開される無数の情報の中から、特に重要度の高い論点や視点を特定し、明示的に保存するための仕組みです。議論の過程でどの要素が焦点化されたのかを記録することで、組織内の意思決定における思考の継続性と整合性を確保し、後からの検証を容易にする役割を担っています。静的な図表作成に留まらず、動的な戦略分析環境において議論の核心を捉え続けるための重要な基盤となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-8-2">
+              <div class="element-header">
+                <span class="element-id element-id-concept">8-2</span>
+                <span class="element-name">重要化を記録する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>議論経路記録保存における「重要化を記録する」とは、組織的な意思決定過程において、膨大な情報からどの要素を戦略的に優先すべきだと判断したのか、その価値基準と意思決定の根拠を後から検証可能な形で保存するプロセスです。AIが提示した分析データに対し、人間がどの論点に重きを置いたかを明確に記録することで、思考の経緯を透明化し、将来の再検討や組織内での合意形成を支援する重要な役割を担っています。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-8-3">
+              <div class="element-header">
+                <span class="element-id element-id-concept">8-3</span>
+                <span class="element-name">除外理由を記録する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>この要素は、戦略的な意思決定プロセスにおいて、議論の過程で検討対象から外した事柄やその判断に至った根拠を明確に記録する役割を担います。単なる情報の整理にとどまらず、なぜその変数を選択しなかったのかという思考の道筋を可視化することで、組織内での議論の妥当性を後から検証可能にし、将来的な再検討や戦略の修正にも寄与する重要な記録です。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-8-4">
+              <div class="element-header">
+                <span class="element-id element-id-concept">8-4</span>
+                <span class="element-name">保留理由を記録する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>この要素は、議論や意思決定の過程で一度検討されたものの、即座には採用されなかった論点や判断を、なぜ保留とするに至ったかという根拠を明確に記録する機能です。単なる情報の整理に留まらず、思考の推移や組織の判断基準を後から詳細に検証・再評価できるようにすることで、議論の継続性と透明性を維持する役割を担います。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-8-5">
+              <div class="element-header">
+                <span class="element-id element-id-concept">8-5</span>
+                <span class="element-name">セル間関係を残す</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>議論経路記録保存における「セル間関係を残す」とは、分析対象となる諸要素を単に列挙するだけでなく、各項目が相互にどのような論理的影響や因果関係を持っているかを保持し可視化することを指します。これにより、意思決定の過程でどの要素がどのような文脈で結びつけられたのかを後から検証可能となり、思考の継続性と組織的な学習を支えるための構造的な基盤となります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-8-6">
+              <div class="element-header">
+                <span class="element-id element-id-concept">8-6</span>
+                <span class="element-name">反論を記録する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>反論を記録するとは、意思決定に至る過程で生じた批判的な見解や否定的な評価を、議論の履歴の一部として明示的に保持することを指します。これは単なる結論の保存ではなく、対立する論理や検討の跡を可視化することで、なぜその戦略が選択されたのかという思考の正当性と継続性を事後に再検証可能にするための重要な要素です。組織の意思決定における多角的な視点を担保し、後の再検討や学習を円滑に進めるための不可欠な記録プロセスとなります。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-8-7">
+              <div class="element-header">
+                <span class="element-id element-id-concept">8-7</span>
+                <span class="element-name">重心移動を記録する</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>議論における論点や戦略的焦点が時間経過とともにどのように移り変わったかを捉えるための記録機能です。意思決定プロセスにおいて、当初の関心事からどのような論点が重要視され、何が優先順位として変動したのかという思考の重心の変化を可視化します。これにより、組織内の議論がどのような経路を辿り、現在の結論に至ったかの透明性を高め、過去の検討過程の検証と再評価を可能にします。</p>
+                
+              </div>
+            </div>
+            <div class="element-card" id="element-concept-8-8">
+              <div class="element-header">
+                <span class="element-id element-id-concept">8-8</span>
+                <span class="element-name">議事録と紐づける</span>
+              </div>
+              <div class="element-body">
+                
+                
+                
+                <p>この要素は、議論や思考の過程を記録する際に、具体的な会議の議事録データとマトリクス上の各要素を直接結びつける機能を指します。個別の判断に至った背景や文脈を元の議事録から参照可能にすることで、意思決定の妥当性を後から検証し、組織内での思考継続性を確保するための不可欠な仕組みです。単なる図の整理に留まらず、経緯を明示的に紐づけることで、議論の動的な推移を客観的な事実に基づき正確に追跡できる環境を整えます。</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <footer>
+    <p>&copy; 2026 DMM型ネットアセスメント. Generated by DMM64 App.</p>
+  </footer>
+  
+</body>
+</html>
